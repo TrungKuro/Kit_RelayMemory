@@ -1,0 +1,721 @@
+//<File !Start!>
+// FILE: [testVer1_GSLC.h]
+// Created by GUIslice Builder version: [0.17.b20]
+//
+// GUIslice Builder Generated GUI Framework File
+//
+// For the latest guides, updates and support view:
+// https://github.com/ImpulseAdventure/GUIslice
+//
+//<File !End!>
+
+#ifndef _GUISLICE_GEN_H
+#define _GUISLICE_GEN_H
+
+// ------------------------------------------------
+// Headers to include
+// ------------------------------------------------
+#include "GUIslice.h"
+#include "GUIslice_drv.h"
+
+// Include any extended elements
+//<Includes !Start!>
+// Include extended elements
+#include "elem/XTogglebtn.h"
+//<Includes !End!>
+
+// ------------------------------------------------
+// Headers and Defines for fonts
+// Note that font files are located within the Adafruit-GFX library folder:
+// ------------------------------------------------
+//<Fonts !Start!>
+#if !defined(DRV_DISP_TFT_ESPI)
+  #error E_PROJECT_OPTIONS tab->Graphics Library should be Adafruit_GFX
+#endif
+#include <TFT_eSPI.h>
+#include "NotoMono12pt7b.h"
+#include "NotoMono6pt7b.h"
+#include "NotoSansBold10pt7b.h"
+#include "NotoSansBold12pt7b.h"
+#include "NotoSansBold20pt7b.h"
+//<Fonts !End!>
+
+// ------------------------------------------------
+// Defines for resources
+// ------------------------------------------------
+//<Resources !Start!>
+extern "C" const unsigned short exit_n24[] PROGMEM;
+//<Resources !End!>
+
+// ------------------------------------------------
+// Enumerations for pages, elements, fonts, images
+// ------------------------------------------------
+//<Enum !Start!>
+enum {PG10,PG21,PG31,PG41,PG42,PG22,PG32};
+enum {BOX10,BOX21,BOX22,BOX22_OFF,BOX22_ON,BOX31,BOX32,BOX41_STU
+      ,BOX41_STU1,BOX41_STU2,BOX41_STU3,BOX41_STU4,BOX41_TEA,BOX41_TEA1
+      ,BOX41_TEA2,BOX41_TEA3,BOX41_TEA4,BOX42,BTN10_STU,BTN10_TEA
+      ,BTN21_0,BTN21_1,BTN21_2,BTN21_3,BTN21_4,BTN21_5,BTN21_6,BTN21_7
+      ,BTN21_8,BTN21_9,BTN21_BAC,BTN21_DEL,BTN21_OK,BTN22_SAV,BTN31_BAC
+      ,BTN31_RES,BTN31_SET,BTN32_BAC,BTN32_OK,BTN41_BAC,BTN42_ALL
+      ,BTN42_BAC,BTN42_RES,BTN42_SAV,E_DRAW_LINE2,E_DRAW_LINE3
+      ,E_DRAW_LINE4,E_DRAW_LINE5,E_DRAW_LINE6,E_DRAW_LINE7,E_DRAW_LINE8
+      ,E_DRAW_LINE9,E_ELEM_IMAGE22,LINE1,TOG22_RL1,TOG22_RL2,TOG22_RL3
+      ,TOG22_RL4,TOG42_RL1,TOG42_RL2,TOG42_RL3,TOG42_RL4,TXT10_NUM
+      ,TXT10_TIT,TXT21_PAS,TXT22_OFF,TXT22_ON,TXT22_RL1,TXT22_RL2
+      ,TXT22_RL3,TXT22_RL4,TXT32_1,TXT32_2,TXT41_STU,TXT41_STU1
+      ,TXT41_STU2,TXT41_STU3,TXT41_STU4,TXT41_TEA,TXT41_TEA1,TXT41_TEA2
+      ,TXT41_TEA3,TXT41_TEA4,TXT42_RL1,TXT42_RL2,TXT42_RL3,TXT42_RL4};
+// Must use separate enum for fonts with MAX_FONT at end to use gslc_FontSet.
+enum {E_NOTOMONO12,E_NOTOMONO6,E_NOTOSANSBOLD10,E_NOTOSANSBOLD12
+      ,E_NOTOSANSBOLD20,MAX_FONT};
+//<Enum !End!>
+
+// ------------------------------------------------
+// Instantiate the GUI
+// ------------------------------------------------
+
+// ------------------------------------------------
+// Define the maximum number of elements and pages
+// ------------------------------------------------
+//<ElementDefines !Start!>
+#define MAX_PAGE                7
+
+#define MAX_ELEM_PG10 5 // # Elems total on page
+#define MAX_ELEM_PG10_RAM MAX_ELEM_PG10 // # Elems in RAM
+
+#define MAX_ELEM_PG21 20 // # Elems total on page
+#define MAX_ELEM_PG21_RAM MAX_ELEM_PG21 // # Elems in RAM
+
+#define MAX_ELEM_PG31 4 // # Elems total on page
+#define MAX_ELEM_PG31_RAM MAX_ELEM_PG31 // # Elems in RAM
+
+#define MAX_ELEM_PG41 23 // # Elems total on page
+#define MAX_ELEM_PG41_RAM MAX_ELEM_PG41 // # Elems in RAM
+
+#define MAX_ELEM_PG42 14 // # Elems total on page
+#define MAX_ELEM_PG42_RAM MAX_ELEM_PG42 // # Elems in RAM
+
+#define MAX_ELEM_PG22 16 // # Elems total on page
+#define MAX_ELEM_PG22_RAM MAX_ELEM_PG22 // # Elems in RAM
+
+#define MAX_ELEM_PG32 5 // # Elems total on page
+#define MAX_ELEM_PG32_RAM MAX_ELEM_PG32 // # Elems in RAM
+//<ElementDefines !End!>
+
+// ------------------------------------------------
+// Create element storage
+// ------------------------------------------------
+gslc_tsGui m_gui;
+gslc_tsDriver m_drv;
+gslc_tsFont m_asFont[MAX_FONT];
+gslc_tsPage m_asPage[MAX_PAGE];
+
+//<GUI_Extra_Elements !Start!>
+gslc_tsElem                     m_asPage1Elem[MAX_ELEM_PG10_RAM];
+gslc_tsElemRef                  m_asPage1ElemRef[MAX_ELEM_PG10];
+gslc_tsElem                     m_asPage2Elem[MAX_ELEM_PG21_RAM];
+gslc_tsElemRef                  m_asPage2ElemRef[MAX_ELEM_PG21];
+gslc_tsElem                     m_asPage3Elem[MAX_ELEM_PG31_RAM];
+gslc_tsElemRef                  m_asPage3ElemRef[MAX_ELEM_PG31];
+gslc_tsElem                     m_asPage4Elem[MAX_ELEM_PG41_RAM];
+gslc_tsElemRef                  m_asPage4ElemRef[MAX_ELEM_PG41];
+gslc_tsElem                     m_asPage5Elem[MAX_ELEM_PG42_RAM];
+gslc_tsElemRef                  m_asPage5ElemRef[MAX_ELEM_PG42];
+gslc_tsElem                     m_asPage6Elem[MAX_ELEM_PG22_RAM];
+gslc_tsElemRef                  m_asPage6ElemRef[MAX_ELEM_PG22];
+gslc_tsElem                     m_asPage7Elem[MAX_ELEM_PG32_RAM];
+gslc_tsElemRef                  m_asPage7ElemRef[MAX_ELEM_PG32];
+gslc_tsXTogglebtn               m_asXToggle2;
+gslc_tsXTogglebtn               m_asXToggle3;
+gslc_tsXTogglebtn               m_asXToggle4;
+gslc_tsXTogglebtn               m_asXToggle5;
+gslc_tsXTogglebtn               m_asXToggle6;
+gslc_tsXTogglebtn               m_asXToggle7;
+gslc_tsXTogglebtn               m_asXToggle8;
+gslc_tsXTogglebtn               m_asXToggle9;
+
+#define MAX_STR                 100
+
+//<GUI_Extra_Elements !End!>
+
+// ------------------------------------------------
+// Program Globals
+// ------------------------------------------------
+
+// Element References for direct access
+//<Extern_References !Start!>
+extern gslc_tsElemRef* m_pElemToggle2;
+extern gslc_tsElemRef* m_pElemToggle2_3;
+extern gslc_tsElemRef* m_pElemToggle2_4;
+extern gslc_tsElemRef* m_pElemToggle2_5;
+extern gslc_tsElemRef* m_pElemToggle2_6;
+extern gslc_tsElemRef* m_pElemToggle2_7;
+extern gslc_tsElemRef* m_pElemToggle2_8;
+extern gslc_tsElemRef* m_pElemToggle2_9;
+//<Extern_References !End!>
+
+// Define debug message function
+static int16_t DebugOut(char ch);
+
+// ------------------------------------------------
+// Callback Methods
+// ------------------------------------------------
+bool CbBtnCommon(void *pvGui, void *pvElemRef, gslc_teTouch eTouch, int16_t nX, int16_t nY);
+bool CbCheckbox(void *pvGui, void *pvElemRef, int16_t nSelId, bool bState);
+bool CbDrawScanner(void *pvGui, void *pvElemRef, gslc_teRedrawType eRedraw);
+bool CbKeypad(void *pvGui, void *pvElemRef, int16_t nState, void *pvData);
+bool CbListbox(void *pvGui, void *pvElemRef, int16_t nSelId);
+bool CbSlidePos(void *pvGui, void *pvElemRef, int16_t nPos);
+bool CbSpinner(void *pvGui, void *pvElemRef, int16_t nState, void *pvData);
+bool CbTickScanner(void *pvGui, void *pvScope);
+
+// ------------------------------------------------
+// Create page elements
+// ------------------------------------------------
+void InitGUIslice_gen()
+{
+  gslc_tsElemRef *pElemRef = NULL;
+
+  if (!gslc_Init(&m_gui, &m_drv, m_asPage, MAX_PAGE, m_asFont, MAX_FONT))
+  {
+    return;
+  }
+
+  // ------------------------------------------------
+  // Load Fonts
+  // ------------------------------------------------
+  //<Load_Fonts !Start!>
+    if (!gslc_FontSet(&m_gui,E_NOTOMONO12,GSLC_FONTREF_PTR,&NotoMono12pt7b,1)) { return; }
+    if (!gslc_FontSet(&m_gui,E_NOTOMONO6,GSLC_FONTREF_PTR,&NotoMono6pt7b,1)) { return; }
+    if (!gslc_FontSet(&m_gui,E_NOTOSANSBOLD10,GSLC_FONTREF_PTR,&NotoSansBold10pt7b,1)) { return; }
+    if (!gslc_FontSet(&m_gui,E_NOTOSANSBOLD12,GSLC_FONTREF_PTR,&NotoSansBold12pt7b,1)) { return; }
+    if (!gslc_FontSet(&m_gui,E_NOTOSANSBOLD20,GSLC_FONTREF_PTR,&NotoSansBold20pt7b,1)) { return; }
+  //<Load_Fonts !End!>
+
+  //<InitGUI !Start!>
+  gslc_PageAdd(&m_gui,PG10,m_asPage1Elem,MAX_ELEM_PG10_RAM,m_asPage1ElemRef,MAX_ELEM_PG10);
+  gslc_PageAdd(&m_gui,PG21,m_asPage2Elem,MAX_ELEM_PG21_RAM,m_asPage2ElemRef,MAX_ELEM_PG21);
+  gslc_PageAdd(&m_gui,PG31,m_asPage3Elem,MAX_ELEM_PG31_RAM,m_asPage3ElemRef,MAX_ELEM_PG31);
+  gslc_PageAdd(&m_gui,PG41,m_asPage4Elem,MAX_ELEM_PG41_RAM,m_asPage4ElemRef,MAX_ELEM_PG41);
+  gslc_PageAdd(&m_gui,PG42,m_asPage5Elem,MAX_ELEM_PG42_RAM,m_asPage5ElemRef,MAX_ELEM_PG42);
+  gslc_PageAdd(&m_gui,PG22,m_asPage6Elem,MAX_ELEM_PG22_RAM,m_asPage6ElemRef,MAX_ELEM_PG22);
+  gslc_PageAdd(&m_gui,PG32,m_asPage7Elem,MAX_ELEM_PG32_RAM,m_asPage7ElemRef,MAX_ELEM_PG32);
+
+  // NOTE: The current page defaults to the first page added. Here we explicitly
+  //       ensure that the main page is the correct page no matter the add order.
+  gslc_SetPageCur(&m_gui,PG10);
+  
+  // Set Background to a flat color
+  gslc_SetBkgndColor(&m_gui,GSLC_COL_GRAY_DK2);
+
+  // -----------------------------------
+  // PAGE: PG10
+  
+  
+  // Create TXT10_TIT text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT10_TIT,PG10,(gslc_tsRect){0,0,250,50},
+    (char*)"Kit Relay Memory",0,E_NOTOSANSBOLD12);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,((gslc_tsColor){128,128,240}));
+  
+  // Create TXT10_NUM text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT10_NUM,PG10,(gslc_tsRect){250,0,70,50},
+    (char*)"00",0,E_NOTOSANSBOLD12);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,((gslc_tsColor){128,128,240}));
+   
+  // Create BOX10 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX10,PG10,(gslc_tsRect){10,50,300,180});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // create BTN10_TEA button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN10_TEA,PG10,
+    (gslc_tsRect){60,70,200,60},(char*)"Teacher",0,E_NOTOMONO12,&CbBtnCommon);
+  
+  // create BTN10_STU button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN10_STU,PG10,
+    (gslc_tsRect){60,150,200,60},(char*)"Student",0,E_NOTOMONO12,&CbBtnCommon);
+
+  // -----------------------------------
+  // PAGE: PG21
+  
+   
+  // Create BOX21 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX21,PG21,(gslc_tsRect){10,10,300,45});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT21_PAS text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT21_PAS,PG21,(gslc_tsRect){10,10,300,45},
+    (char*)"* * * *",0,E_NOTOSANSBOLD12);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  
+  // create BTN21_OK button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN21_OK,PG21,
+    (gslc_tsRect){10,200,60,30},(char*)"OK",0,E_NOTOMONO6,&CbBtnCommon);
+  
+  // create BTN21_BAC button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN21_BAC,PG21,
+    (gslc_tsRect){250,200,60,30},(char*)"BACK",0,E_NOTOMONO6,&CbBtnCommon);
+  
+  // create BTN21_1 button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN21_1,PG21,
+    (gslc_tsRect){15,65,65,35},(char*)"1",0,E_NOTOSANSBOLD10,&CbBtnCommon);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_GRAY_LT2,GSLC_COL_GRAY_LT3,GSLC_COL_GRAY_LT1);
+  
+  // create BTN21_2 button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN21_2,PG21,
+    (gslc_tsRect){90,65,65,35},(char*)"2",0,E_NOTOSANSBOLD10,&CbBtnCommon);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_GRAY_LT2,GSLC_COL_GRAY_LT3,GSLC_COL_GRAY_LT1);
+  
+  // create BTN21_3 button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN21_3,PG21,
+    (gslc_tsRect){165,65,65,35},(char*)"3",0,E_NOTOSANSBOLD10,&CbBtnCommon);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_GRAY_LT2,GSLC_COL_GRAY_LT3,GSLC_COL_GRAY_LT1);
+  
+  // create BTN21_0 button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN21_0,PG21,
+    (gslc_tsRect){240,65,65,35},(char*)"0",0,E_NOTOSANSBOLD10,&CbBtnCommon);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_GRAY_LT2,GSLC_COL_GRAY_LT3,GSLC_COL_GRAY_LT1);
+  
+  // create BTN21_4 button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN21_4,PG21,
+    (gslc_tsRect){15,110,65,35},(char*)"4",0,E_NOTOSANSBOLD10,&CbBtnCommon);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_GRAY_LT2,GSLC_COL_GRAY_LT3,GSLC_COL_GRAY_LT1);
+  
+  // create BTN21_7 button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN21_7,PG21,
+    (gslc_tsRect){15,155,65,35},(char*)"7",0,E_NOTOSANSBOLD10,&CbBtnCommon);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_GRAY_LT2,GSLC_COL_GRAY_LT3,GSLC_COL_GRAY_LT1);
+  
+  // create BTN21_5 button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN21_5,PG21,
+    (gslc_tsRect){90,110,65,35},(char*)"5",0,E_NOTOSANSBOLD10,&CbBtnCommon);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_GRAY_LT2,GSLC_COL_GRAY_LT3,GSLC_COL_GRAY_LT1);
+  
+  // create BTN21_6 button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN21_6,PG21,
+    (gslc_tsRect){165,110,65,35},(char*)"6",0,E_NOTOSANSBOLD10,&CbBtnCommon);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_GRAY_LT2,GSLC_COL_GRAY_LT3,GSLC_COL_GRAY_LT1);
+  
+  // create BTN21_8 button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN21_8,PG21,
+    (gslc_tsRect){90,155,65,35},(char*)"8",0,E_NOTOSANSBOLD10,&CbBtnCommon);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_GRAY_LT2,GSLC_COL_GRAY_LT3,GSLC_COL_GRAY_LT1);
+  
+  // create BTN21_9 button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN21_9,PG21,
+    (gslc_tsRect){165,155,65,35},(char*)"9",0,E_NOTOSANSBOLD10,&CbBtnCommon);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_GRAY_LT2,GSLC_COL_GRAY_LT3,GSLC_COL_GRAY_LT1);
+  
+  // create BTN21_DEL button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN21_DEL,PG21,
+    (gslc_tsRect){240,110,65,80},(char*)"<",0,E_NOTOSANSBOLD20,&CbBtnCommon);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_GRAY_LT2,GSLC_COL_GRAY_LT3,GSLC_COL_GRAY_LT1);
+
+  // Create LINE1 line 
+  pElemRef = gslc_ElemCreateLine(&m_gui,LINE1,PG21,10,105,310,105);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_BLACK,GSLC_COL_WHITE,GSLC_COL_WHITE);
+
+  // Create E_DRAW_LINE2 line 
+  pElemRef = gslc_ElemCreateLine(&m_gui,E_DRAW_LINE2,PG21,10,150,235,150);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_BLACK,GSLC_COL_WHITE,GSLC_COL_WHITE);
+
+  // Create E_DRAW_LINE3 line 
+  pElemRef = gslc_ElemCreateLine(&m_gui,E_DRAW_LINE3,PG21,85,60,85,195);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_BLACK,GSLC_COL_WHITE,GSLC_COL_WHITE);
+
+  // Create E_DRAW_LINE4 line 
+  pElemRef = gslc_ElemCreateLine(&m_gui,E_DRAW_LINE4,PG21,160,60,160,195);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_BLACK,GSLC_COL_WHITE,GSLC_COL_WHITE);
+
+  // Create E_DRAW_LINE5 line 
+  pElemRef = gslc_ElemCreateLine(&m_gui,E_DRAW_LINE5,PG21,235,60,235,195);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_BLACK,GSLC_COL_WHITE,GSLC_COL_WHITE);
+
+  // -----------------------------------
+  // PAGE: PG31
+  
+   
+  // Create BOX31 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX31,PG31,(gslc_tsRect){10,10,300,180});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // create BTN31_BAC button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN31_BAC,PG31,
+    (gslc_tsRect){250,200,60,30},(char*)"BACK",0,E_NOTOMONO6,&CbBtnCommon);
+  
+  // create BTN31_RES button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN31_RES,PG31,
+    (gslc_tsRect){60,30,200,60},(char*)"Result",0,E_NOTOMONO12,&CbBtnCommon);
+  
+  // create BTN31_SET button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN31_SET,PG31,
+    (gslc_tsRect){60,110,200,60},(char*)"Set Pan",0,E_NOTOMONO12,&CbBtnCommon);
+
+  // -----------------------------------
+  // PAGE: PG41
+  
+  
+  // create BTN41_BAC button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN41_BAC,PG41,
+    (gslc_tsRect){250,200,60,30},(char*)"BACK",0,E_NOTOMONO6,&CbBtnCommon);
+   
+  // Create BOX41_TEA box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX41_TEA,PG41,(gslc_tsRect){10,10,300,85});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT41_TEA text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT41_TEA,PG41,(gslc_tsRect){10,10,300,30},
+    (char*)"Teacher:",0,E_NOTOMONO6);
+  gslc_ElemSetTxtMargin(&m_gui,pElemRef,10);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+   
+  // Create BOX41_TEA1 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX41_TEA1,PG41,(gslc_tsRect){20,40,60,45});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_GREEN,GSLC_COL_RED);
+   
+  // Create BOX41_TEA2 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX41_TEA2,PG41,(gslc_tsRect){90,40,60,45});
+  // Set the callback function to handle all drawing for the element
+  gslc_ElemSetDrawFunc(&m_gui,pElemRef,&CbDrawScanner);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_GREEN,GSLC_COL_RED);
+   
+  // Create BOX41_TEA4 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX41_TEA4,PG41,(gslc_tsRect){240,40,60,45});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_GREEN,GSLC_COL_RED);
+   
+  // Create BOX41_TEA3 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX41_TEA3,PG41,(gslc_tsRect){170,40,60,45});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_GREEN,GSLC_COL_RED);
+
+  // Create E_DRAW_LINE6 line 
+  pElemRef = gslc_ElemCreateLine(&m_gui,E_DRAW_LINE6,PG41,160,40,160,85);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_BLACK,GSLC_COL_WHITE,GSLC_COL_WHITE);
+   
+  // Create BOX41_STU box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX41_STU,PG41,(gslc_tsRect){10,105,300,85});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT41_STU text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT41_STU,PG41,(gslc_tsRect){10,105,300,30},
+    (char*)"Student:",0,E_NOTOMONO6);
+  gslc_ElemSetTxtMargin(&m_gui,pElemRef,10);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+   
+  // Create BOX41_STU1 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX41_STU1,PG41,(gslc_tsRect){20,135,60,45});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_GREEN,GSLC_COL_RED);
+   
+  // Create BOX41_STU2 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX41_STU2,PG41,(gslc_tsRect){90,135,60,45});
+  // Set the callback function to handle all drawing for the element
+  gslc_ElemSetDrawFunc(&m_gui,pElemRef,&CbDrawScanner);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_GREEN,GSLC_COL_RED);
+   
+  // Create BOX41_STU4 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX41_STU4,PG41,(gslc_tsRect){240,135,60,45});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_GREEN,GSLC_COL_RED);
+   
+  // Create BOX41_STU3 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX41_STU3,PG41,(gslc_tsRect){170,135,60,45});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_GREEN,GSLC_COL_RED);
+
+  // Create E_DRAW_LINE7 line 
+  pElemRef = gslc_ElemCreateLine(&m_gui,E_DRAW_LINE7,PG41,160,135,160,180);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_BLACK,GSLC_COL_WHITE,GSLC_COL_WHITE);
+  
+  // Create TXT41_TEA1 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT41_TEA1,PG41,(gslc_tsRect){20,40,60,45},
+    (char*)"1",0,E_NOTOSANSBOLD10);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT41_TEA2 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT41_TEA2,PG41,(gslc_tsRect){90,40,60,45},
+    (char*)"2",0,E_NOTOSANSBOLD10);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT41_TEA3 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT41_TEA3,PG41,(gslc_tsRect){170,40,60,45},
+    (char*)"3",0,E_NOTOSANSBOLD10);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT41_TEA4 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT41_TEA4,PG41,(gslc_tsRect){240,40,60,45},
+    (char*)"4",0,E_NOTOSANSBOLD10);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT41_STU1 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT41_STU1,PG41,(gslc_tsRect){20,135,60,45},
+    (char*)"1",0,E_NOTOSANSBOLD10);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT41_STU2 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT41_STU2,PG41,(gslc_tsRect){90,135,60,45},
+    (char*)"2",0,E_NOTOSANSBOLD10);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT41_STU3 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT41_STU3,PG41,(gslc_tsRect){170,135,60,45},
+    (char*)"3",0,E_NOTOSANSBOLD10);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT41_STU4 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT41_STU4,PG41,(gslc_tsRect){240,135,60,45},
+    (char*)"4",0,E_NOTOSANSBOLD10);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_BLACK);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+
+  // -----------------------------------
+  // PAGE: PG42
+  
+  
+  // create BTN42_BAC button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN42_BAC,PG42,
+    (gslc_tsRect){250,200,60,30},(char*)"BACK",0,E_NOTOMONO6,&CbBtnCommon);
+  
+  // create BTN42_SAV button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN42_SAV,PG42,
+    (gslc_tsRect){10,200,60,30},(char*)"SAVE",0,E_NOTOMONO6,&CbBtnCommon);
+   
+  // Create BOX42 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX42,PG42,(gslc_tsRect){10,10,300,180});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // create BTN42_RES button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN42_RES,PG42,
+    (gslc_tsRect){20,130,120,50},(char*)"RESET",0,E_NOTOMONO6,&CbBtnCommon);
+  
+  // create BTN42_ALL button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN42_ALL,PG42,
+    (gslc_tsRect){180,130,120,50},(char*)"ALL",0,E_NOTOMONO6,&CbBtnCommon);
+
+  // Create E_DRAW_LINE8 line 
+  pElemRef = gslc_ElemCreateLine(&m_gui,E_DRAW_LINE8,PG42,20,120,300,120);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_BLACK,GSLC_COL_WHITE,GSLC_COL_WHITE);
+  
+  // Create TXT42_RL1 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT42_RL1,PG42,(gslc_tsRect){20,70,70,40},
+    (char*)"Relay1",0,E_NOTOMONO6);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetTxtMargin(&m_gui,pElemRef,10);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT42_RL2 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT42_RL2,PG42,(gslc_tsRect){90,70,70,40},
+    (char*)"Relay2",0,E_NOTOMONO6);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetTxtMargin(&m_gui,pElemRef,10);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT42_RL3 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT42_RL3,PG42,(gslc_tsRect){160,70,70,40},
+    (char*)"Relay3",0,E_NOTOMONO6);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetTxtMargin(&m_gui,pElemRef,10);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT42_RL4 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT42_RL4,PG42,(gslc_tsRect){230,70,70,40},
+    (char*)"Relay4",0,E_NOTOMONO6);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetTxtMargin(&m_gui,pElemRef,10);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create toggle button TOG42_RL1
+  pElemRef = gslc_ElemXTogglebtnCreate(&m_gui,TOG42_RL1,PG42,&m_asXToggle2,
+    (gslc_tsRect){25,20,60,40},GSLC_COL_GRAY_LT1,GSLC_COL_GREEN_LT1,GSLC_COL_RED_LT1,
+    false,false,&CbBtnCommon);
+  m_pElemToggle2 = pElemRef;
+  
+  // Create toggle button TOG42_RL2
+  pElemRef = gslc_ElemXTogglebtnCreate(&m_gui,TOG42_RL2,PG42,&m_asXToggle3,
+    (gslc_tsRect){95,20,60,40},GSLC_COL_GRAY_LT1,GSLC_COL_GREEN_LT1,GSLC_COL_RED_LT1,
+    false,false,&CbBtnCommon);
+  m_pElemToggle2_3 = pElemRef;
+  
+  // Create toggle button TOG42_RL3
+  pElemRef = gslc_ElemXTogglebtnCreate(&m_gui,TOG42_RL3,PG42,&m_asXToggle4,
+    (gslc_tsRect){165,20,60,40},GSLC_COL_GRAY_LT1,GSLC_COL_GREEN_LT1,GSLC_COL_RED_LT1,
+    false,false,&CbBtnCommon);
+  m_pElemToggle2_4 = pElemRef;
+  
+  // Create toggle button TOG42_RL4
+  pElemRef = gslc_ElemXTogglebtnCreate(&m_gui,TOG42_RL4,PG42,&m_asXToggle5,
+    (gslc_tsRect){235,20,60,40},GSLC_COL_GRAY_LT1,GSLC_COL_GREEN_LT1,GSLC_COL_RED_LT1,
+    false,false,&CbBtnCommon);
+  m_pElemToggle2_5 = pElemRef;
+
+  // -----------------------------------
+  // PAGE: PG22
+  
+  
+  // create BTN22_SAV button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN22_SAV,PG22,
+    (gslc_tsRect){10,200,60,30},(char*)"SAVE",0,E_NOTOMONO6,&CbBtnCommon);
+   
+  // Create BOX22 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX22,PG22,(gslc_tsRect){10,10,300,180});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create toggle button TOG22_RL1
+  pElemRef = gslc_ElemXTogglebtnCreate(&m_gui,TOG22_RL1,PG22,&m_asXToggle6,
+    (gslc_tsRect){25,20,60,40},GSLC_COL_GRAY_LT1,GSLC_COL_GREEN_LT1,GSLC_COL_RED_LT1,
+    false,false,&CbBtnCommon);
+  m_pElemToggle2_6 = pElemRef;
+  
+  // Create toggle button TOG22_RL2
+  pElemRef = gslc_ElemXTogglebtnCreate(&m_gui,TOG22_RL2,PG22,&m_asXToggle7,
+    (gslc_tsRect){95,20,60,40},GSLC_COL_GRAY_LT1,GSLC_COL_GREEN_LT1,GSLC_COL_RED_LT1,
+    false,false,&CbBtnCommon);
+  m_pElemToggle2_7 = pElemRef;
+  
+  // Create toggle button TOG22_RL3
+  pElemRef = gslc_ElemXTogglebtnCreate(&m_gui,TOG22_RL3,PG22,&m_asXToggle8,
+    (gslc_tsRect){165,20,60,40},GSLC_COL_GRAY_LT1,GSLC_COL_GREEN_LT1,GSLC_COL_RED_LT1,
+    false,false,&CbBtnCommon);
+  m_pElemToggle2_8 = pElemRef;
+  
+  // Create toggle button TOG22_RL4
+  pElemRef = gslc_ElemXTogglebtnCreate(&m_gui,TOG22_RL4,PG22,&m_asXToggle9,
+    (gslc_tsRect){235,20,60,40},GSLC_COL_GRAY_LT1,GSLC_COL_GREEN_LT1,GSLC_COL_RED_LT1,
+    false,false,&CbBtnCommon);
+  m_pElemToggle2_9 = pElemRef;
+  
+  // Create TXT22_RL1 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT22_RL1,PG22,(gslc_tsRect){20,70,70,40},
+    (char*)"Relay1",0,E_NOTOMONO6);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetTxtMargin(&m_gui,pElemRef,10);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT22_RL2 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT22_RL2,PG22,(gslc_tsRect){90,70,70,40},
+    (char*)"Relay2",0,E_NOTOMONO6);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetTxtMargin(&m_gui,pElemRef,10);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT22_RL3 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT22_RL3,PG22,(gslc_tsRect){160,70,70,40},
+    (char*)"Relay3",0,E_NOTOMONO6);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetTxtMargin(&m_gui,pElemRef,10);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT22_RL4 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT22_RL4,PG22,(gslc_tsRect){230,70,70,40},
+    (char*)"Relay4",0,E_NOTOMONO6);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetTxtMargin(&m_gui,pElemRef,10);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+
+  // Create E_DRAW_LINE9 line 
+  pElemRef = gslc_ElemCreateLine(&m_gui,E_DRAW_LINE9,PG22,20,120,300,120);
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_BLACK,GSLC_COL_WHITE,GSLC_COL_WHITE);
+   
+  // Create BOX22_OFF box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX22_OFF,PG22,(gslc_tsRect){165,130,135,50});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+   
+  // Create BOX22_ON box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX22_ON,PG22,(gslc_tsRect){20,130,135,50});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT22_OFF text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT22_OFF,PG22,(gslc_tsRect){165,130,50,50},
+    (char*)"OFF",0,E_NOTOSANSBOLD12);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_GREEN);
+  
+  // Create TXT22_ON text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT22_ON,PG22,(gslc_tsRect){20,130,50,50},
+    (char*)"ON",0,E_NOTOSANSBOLD12);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  gslc_ElemSetTxtCol(&m_gui,pElemRef,GSLC_COL_RED);
+ 
+  // Create E_ELEM_IMAGE22 using Image 
+  pElemRef = gslc_ElemCreateImg(&m_gui,E_ELEM_IMAGE22,PG22,(gslc_tsRect){150,200,32,32},
+    gslc_GetImageFromProg((const unsigned char*)exit_n24,GSLC_IMGREF_FMT_BMP24));
+
+  // -----------------------------------
+  // PAGE: PG32
+  
+  
+  // create BTN32_OK button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN32_OK,PG32,
+    (gslc_tsRect){10,200,60,30},(char*)"OK",0,E_NOTOMONO6,&CbBtnCommon);
+  
+  // create BTN32_BAC button with text label
+  pElemRef = gslc_ElemCreateBtnTxt(&m_gui,BTN32_BAC,PG32,
+    (gslc_tsRect){250,200,60,30},(char*)"BACK",0,E_NOTOMONO6,&CbBtnCommon);
+   
+  // Create BOX32 box
+  pElemRef = gslc_ElemCreateBox(&m_gui,BOX32,PG32,(gslc_tsRect){10,10,300,180});
+  gslc_ElemSetCol(&m_gui,pElemRef,GSLC_COL_WHITE,GSLC_COL_BLACK,GSLC_COL_BLACK);
+  
+  // Create TXT32_1 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT32_1,PG32,(gslc_tsRect){20,60,280,40},
+    (char*)"Are you sure you want",0,E_NOTOSANSBOLD12);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  
+  // Create TXT32_2 text label
+  pElemRef = gslc_ElemCreateTxt(&m_gui,TXT32_2,PG32,(gslc_tsRect){20,100,280,40},
+    (char*)"to submit it ?",0,E_NOTOSANSBOLD12);
+  gslc_ElemSetTxtAlign(&m_gui,pElemRef,GSLC_ALIGN_MID_MID);
+  gslc_ElemSetFillEn(&m_gui,pElemRef,false);
+  //<InitGUI !End!>
+
+  //<Startup !Start!>
+  //<Startup !End!>
+}
+
+#endif // end _GUISLICE_GEN_H
